@@ -6,30 +6,41 @@ class PokemonList extends Component {
 
   state = {
     currentPokemon: {},
-    pokemon: 'blue'
+    pokemon: 'blue',
+    pokemonList: []
   }
 
-  componentDidMount(){
-    axios.get('https://pokeapi.co/api/v2/pokemon/bulbasaur/').then((result) => {
-      console.log(result);
-      console.log(result.data.name);
-      console.log(result.data.id);
-      console.log(result.data.sprites.front_default);
-      console.log('state: ', this.state.currentPokemon);
+  getPokemon = (url) => {
+    axios.get(url).then((result) => {
       this.setState({currentPokemon: result});
-      console.log('state: ', this.state.currentPokemon.data.name);
     }).catch((error) => {
       console.log(error);
     });
-
-
   }
+
+
+  componentDidMount(){
+    this.getPokemon('https://pokeapi.co/api/v2/pokemon/ivysaur/');
+
+    axios.get('https://pokeapi.co/api/v2/pokemon/?limit=3&offset=6').then((result) => {
+      this.setState({pokemonList: result})
+      console.log('many pokemon', result);
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
 
   render(){
 
     let newPokemon = this.state.currentPokemon.data;
     if(typeof this.state.currentPokemon !== 'undefined'){
       console.log('render',newPokemon);
+    }
+
+    if(typeof this.state.pokemonList.data !== 'undefined'){
+      let newList = this.state.pokemonList.data.results;
+      console.log('render',newList);
     }
 
     return(
@@ -43,6 +54,18 @@ class PokemonList extends Component {
           <h4 className='pokemonName'>{newPokemon.name}</h4>
         </div>
       }
+
+        <ol className='pokemon-list'>
+          {
+            (typeof newList !== 'undefined') && 
+            newList.map((pokemon) => (
+              <li>
+                <h3>name</h3>
+                <h3>number</h3>
+              </li>
+            ))
+          }
+        </ol>
 
       </div>
     )
