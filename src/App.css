@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  position: relative;
 }
 
 .App-logo {
@@ -29,4 +31,28 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.card {
+  border: 2px solid green;
+  margin-left: 400px;
+}
+
+.list-item {
+  border: 2px solid green;
+  list-style-type: none;
+}
+
+.pokemon-list {
+  padding: 0px;
+  margin: 0px;
+  width: 240px;
+  background-color: grey;
+  height: 100vh;
+  position:absolute;
+  /* left: 0px; */
+  top: 0px;
+  z-index: 2;
+  transition: 0.5s;
+  overflow: auto;
 }
