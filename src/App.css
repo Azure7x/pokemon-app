@@ -45,7 +45,9 @@
 
 .pokemon-list {
   padding: 0px;
-  margin: 0px;
+}
+
+.side-menu {
   width: 240px;
   background-color: grey;
   height: 100vh;
