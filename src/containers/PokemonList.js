@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-
 class PokemonList extends Component {
 
   state = {
     pokemonList: []
   }
 
-  getPokemon = (url) => {
-    axios.get(url).then((result) => {
-      this.setState({currentPokemon: result});
-    }).catch((error) => {
-      console.log(error);
-    });
+  // getPokemon = (url) => {
+  //   axios.get(url).then((result) => {
+  //     this.setState({currentPokemon: result});
+  //   }).catch((error) => {
+  //     console.log(error);
+  //   });
+  // }
+
+  listClick = (event) => {
+    if(event.target.nodeName === 'H3'){
+      this.props.getPokemon(event.target.innerHTML);
+    } else if (event.target.nodeName === 'LI') {
+      alert(event.target.children[0].innerHTML);
+    }
   }
 
-
   componentDidMount(){
-    axios.get('https://pokeapi.co/api/v2/pokemon/?limit=9').then((result) => {
+    axios.get('https://pokeapi.co/api/v2/pokemon/?limit=151').then((result) => {
       this.setState({pokemonList: result})
-      console.log('many pokemon', result);
     }).catch((error) => {
       console.log(error);
     });
@@ -32,11 +37,10 @@ class PokemonList extends Component {
     let newList = [];
     if(typeof this.state.pokemonList.data !== 'undefined'){
       newList = this.state.pokemonList.data.results;
-      console.log('render',newList);
     }
 
     return(
-      <ul className='pokemon-list'>
+      <ul className='pokemon-list' onClick={(event) => this.listClick(event)}>
           {
             typeof newList !== 'undefined' &&
             newList.map((pokemon) => (
