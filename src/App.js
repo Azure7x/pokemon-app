@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import PokemonList from './containers/PokemonList.js';
 import PokemonInfo from './containers/PokemonInfo.js';
+import Header from './containers/Header.js';
 
 class App extends Component {
 
@@ -26,6 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Header/>
         <PokemonInfo
           currentPokemon={this.state.currentPokemon}
         />

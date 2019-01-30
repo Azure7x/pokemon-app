@@ -2,20 +2,6 @@ import React, { Component } from 'react';
 
 class PokemonInfo extends Component {
 
-
-  // getPokemon = (pokemon) => {
-  //   let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
-  //   axios.get(url).then((result) => {
-  //     this.setState({currentPokemon: result});
-  //   }).catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
-  //
-  // componentDidMount(){
-  //   this.getPokemon('ivysaur');
-  // }
-
   render() {
 
     let newPokemon = this.props.currentPokemon.data;
