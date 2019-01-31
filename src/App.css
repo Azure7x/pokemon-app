@@ -39,10 +39,11 @@ h1 {
   }
 }
 
-.card {
-  border: 2px solid #b8b4c1;
+#card {
+  border: 2px solid red;
   border-radius: 20px;
   margin-left: 240px;
+  background-color: blue;
 }
 
 .list-item {
