@@ -23,6 +23,7 @@ class PokemonList extends Component {
     } else if (event.target.nodeName === 'LI') {
       this.props.getPokemon(event.target.children[0].innerHTML);
     }
+    
   }
 
   updateQuery = (query) => {
