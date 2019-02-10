@@ -94,7 +94,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    this.getPokemon('ivysaur');
+    this.getPokemon('bulbasaur');
   }
 
   render() {
