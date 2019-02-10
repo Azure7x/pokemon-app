@@ -23,7 +23,7 @@ class PokemonList extends Component {
     } else if (event.target.nodeName === 'LI') {
       this.props.getPokemon(event.target.children[0].innerHTML);
     }
-    
+
   }
 
   updateQuery = (query) => {
@@ -51,7 +51,7 @@ class PokemonList extends Component {
 
     return(
       <div className='side-menu'>
-      <div className='search-top'>
+        <div className='search-top'>
           <input
           type='text'
           placeholder='Search Pokemon'
