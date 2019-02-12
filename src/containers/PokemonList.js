@@ -9,14 +9,6 @@ class PokemonList extends Component {
     query: ''
   }
 
-  // getPokemon = (url) => {
-  //   axios.get(url).then((result) => {
-  //     this.setState({currentPokemon: result});
-  //   }).catch((error) => {
-  //     console.log(error);
-  //   });
-  // }
-
   listClick = (event) => {
     if(event.target.nodeName === 'H3'){
       this.props.getPokemon(event.target.innerHTML);
