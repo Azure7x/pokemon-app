@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PokemonStats from './PokemonStats';
 
 class PokemonInfo extends Component {
 
@@ -51,13 +52,9 @@ class PokemonInfo extends Component {
               <h5>Height: {this.getHeightWeight(newPokemon.height)}</h5>
               <h5>Weight: {this.getHeightWeight(newPokemon.weight)}</h5>
               </div>
-              {/*The section for the pokemons stats*/}
-              <div className='card-section'>
-                <h4 className='section-title'>Stats</h4>
-                {newPokemon.stats.map((stat) => (
-                  <h5>{stat.stat.name}-{stat.base_stat}</h5>
-                ))}
-              </div>
+              <PokemonStats
+                stats={newPokemon.stats}
+              />
             </div>
           </div>
         }
