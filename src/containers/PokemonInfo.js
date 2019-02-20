@@ -18,9 +18,26 @@ class PokemonInfo extends Component {
     return (number * .1).toFixed(2);
   }
 
+  machineMove = [];
+  levelUpMove = [];
+  tutorMove = [];
+
   render() {
 
     let newPokemon = this.props.currentPokemon.data;
+
+    if(typeof newPokemon !== 'undefined') {
+
+      newPokemon.moves.map((move) => {
+        if(move.version_group_details[0].move_learn_method.name === 'tutor') {
+          this.tutorMove.push(move);
+        } else if(move.version_group_details[0].move_learn_method.name === 'machine') {
+          this.machineMove.push(move);
+        } else if(move.version_group_details[0].move_learn_method.name === 'level-up') {
+          this.levelUpMove.push(move);
+        }
+      });
+    }
 
     return(
       <div>
@@ -57,8 +74,22 @@ class PokemonInfo extends Component {
               />
               {/*The section for the pokemons moves*/}
               <div className='card-section'>
-                <h4 className='section-title'>Moves</h4>
-                {newPokemon.moves.map((move) => (
+                <h4 className='section-title'>Tutor Moves</h4>
+                {this.tutorMove.map((move) => (
+                  <h5>{move.move.name}</h5>
+                ))}
+              </div>
+              {/*The section for the pokemons moves*/}
+              <div className='card-section'>
+                <h4 className='section-title'>TM/HM Moves</h4>
+                {this.machineMove.map((move) => (
+                  <h5>{move.move.name}</h5>
+                ))}
+              </div>
+              {/*The section for the pokemons moves*/}
+              <div className='card-section'>
+                <h4 className='section-title'>Level Up Moves</h4>
+                {this.levelUpMove.map((move) => (
                   <h5>{move.move.name}</h5>
                 ))}
               </div>
