@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 
 class PokemonStats extends Component {
+  //the shortened names of the stats
+  statName = ['spd', 'sp-def', 'sp-atk', 'def', 'atk', 'hp'];
 
   render() {
 
     return(
-      <div className='card-section'>
-      <h4 className='section-title'>Stats</h4>
-      {this.props.stats.map((stat) => (
-        <h5>{stat.stat.name}-{stat.base_stat}</h5>
-      ))}
+      <div className='stat-section'>
+          <h3>Base Stats</h3>
+          {this.props.pokemonStats.map((stat, index) => (
+            <div className='single-stat'>
+            <h5>{this.statName[index]}</h5>
+            <hr/>
+            <h5>{stat.base_stat}</h5>
+            </div>
+          ))}
       </div>
     )
   }

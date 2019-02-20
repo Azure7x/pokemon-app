@@ -48,13 +48,20 @@ class PokemonInfo extends Component {
               </div>
               {/*The section is for pokemons height and weight*/}
               <div className='card-section'>
-              <h4 className='section-title'>Types</h4>
-              <h5>Height: {this.getHeightWeight(newPokemon.height)}</h5>
-              <h5>Weight: {this.getHeightWeight(newPokemon.weight)}</h5>
+              <h5>Height: {this.getHeightWeight(newPokemon.height)}m</h5>
+              <h5>Weight: {this.getHeightWeight(newPokemon.weight)}kg</h5>
               </div>
+              {/*The section is for the pokemons stats*/}
               <PokemonStats
-                stats={newPokemon.stats}
+                pokemonStats={newPokemon.stats}
               />
+              {/*The section for the pokemons moves*/}
+              <div className='card-section'>
+                <h4 className='section-title'>Moves</h4>
+                {newPokemon.moves.map((move) => (
+                  <h5>{move.move.name}</h5>
+                ))}
+              </div>
             </div>
           </div>
         }
