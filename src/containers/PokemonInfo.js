@@ -76,7 +76,7 @@ class PokemonInfo extends Component {
               <div className='card-section'>
                 <h4 className='section-title'>Tutor Moves</h4>
                 {this.tutorMove.map((move) => (
-                  <h5>{move.move.name}</h5>
+                    <h5>{move.move.name}</h5>
                 ))}
               </div>
               {/*The section for the pokemons moves*/}
@@ -90,7 +90,10 @@ class PokemonInfo extends Component {
               <div className='card-section'>
                 <h4 className='section-title'>Level Up Moves</h4>
                 {this.levelUpMove.map((move) => (
-                  <h5>{move.move.name}</h5>
+                  <div className='move-row'>
+                    <h5>{move.move.name}</h5>
+                    <h5>Level: {move.version_group_details[0].level_learned_at}</h5>
+                  </div>
                 ))}
               </div>
             </div>

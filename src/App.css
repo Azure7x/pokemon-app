@@ -128,3 +128,7 @@ h5 {
   display: flex;
   flex-wrap: wrap;
 }
+
+.move-row {
+  display: flex;
+}
